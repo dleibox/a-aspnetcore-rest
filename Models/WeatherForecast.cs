@@ -1,6 +1,6 @@
 using System;
 
-namespace a_aspnetcore_rest
+namespace a_aspnetcore_rest.Models
 {
     public class WeatherForecast
     {

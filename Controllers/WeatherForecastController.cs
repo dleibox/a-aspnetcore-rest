@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
+// https://www.strathweb.com/2015/01/asp-net-mvc-6-attribute-routing-controller-action-tokens/
+
 namespace a_aspnetcore_rest.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")] // [controller] = Controller name
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -34,6 +36,12 @@ namespace a_aspnetcore_rest.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet]
+        [Route("[action]/{name}")] // [action] = function name
+        public string Hello(string name) {
+            return "hello " + name;
         }
     }
 }
